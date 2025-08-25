@@ -1,14 +1,34 @@
 import './App.css'
 import ExperienceItem from './components/ExperienceItem'
 import resume from './assets/resume.pdf'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
+
+  const myImg = document.querySelector('.myImg');
+
+  myImg?.addEventListener('mouseenter', () => {
+    myImg.classList.add('rotated');
+});
+
+setTimeout(() => {
+  myImg?.classList.remove('rotated');
+}, 4000);
+
+AOS.init({
+  duration: 800, // animation speed
+  once: true // only animate once
+});
+
+
+
 
   return (
     <>
      
      <div>
-     <h1>Maithili Rastogi</h1>
+     <h1 className="name"><span id="typed">Maithili Rastogi</span></h1>
      <div className="contactLinks">
       <a href="https://github.com/junimo-maithili">git</a>
       <a href="https://www.linkedin.com/in/maithili-rastogi-982938302/">linkedin</a>
@@ -25,10 +45,11 @@ function App() {
 
         <div className="aboutMe">
           <h2>About Me</h2>
-          <p>My name is Maithili Rastogi, and I'm a grade 12 student in Halton. I'm interesting in drawing, reading, and spending time with my friends!</p>
+          <p>My name is Maithili Rastogi, and I'm a grade 12 student in Halton. I'm interested in drawing, reading, and spending time with my friends!</p>
         </div>
-        <div className="experience">
+        <div className="experience" data-aos="fade-up">
           <h2>Experience</h2>
+          
           <ExperienceItem />
           <ExperienceItem />
           <ExperienceItem />
