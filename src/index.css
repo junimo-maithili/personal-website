@@ -175,9 +175,22 @@ img {
 }
 
 /* Sparkles */
-.sparklesDiv p {
+@keyframes sparkleFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+
+  }
+}
+.sparkles {
   font-size: 30px;
   color: #ffffff;
   z-index: 3;
   padding: 0px;
+  margin: 0px;
+  pointer-events: none;
+  animation: sparkleFade 3s ease-in-out;
+  transform-origin: center center;
 }
