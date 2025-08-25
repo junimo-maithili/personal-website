@@ -13,6 +13,8 @@ posts
 learning model using Google Teachable Machine
         <li>Led beginner and intermediate Python workshops to introduce students to the basics of Python</li>
       </ul>
+
+     
     </div>
   )
 }
