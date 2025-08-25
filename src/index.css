@@ -62,7 +62,7 @@ h2 {
   font-weight: 800;
   margin-top: 0.25em;
 }
-h3, .projects a {
+h3, .allProjects a {
   font-size: 2.3em;
   margin-bottom: -0.5em;
   color: #494b85;
@@ -71,7 +71,7 @@ h3, .projects a {
   overflow: auto;
   white-space: nowrap;
 }
-.projects h2 {
+.allProjects h2 {
   margin-bottom: 2em;
   color: #FFFFFF;
 }
@@ -86,11 +86,18 @@ img {
   background-color: #EDE9FE;
   border-radius: 50px;
 }
-.projects, .myImgDiv, .contactLinks {
+.allProjects, .myImgDiv, .contactLinks {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 2em;
+}
+
+/* Desktop-only elements */
+@media (min-width: 768px) {
+  .smallImg, .sparkles {
+    opacity: 1;
+  }
 }
 
 /* Profile */
@@ -121,6 +128,7 @@ img {
   width: 225px;
   height: 225px;
   border-radius: 5000px;
+  opacity: 0;
 }
 .roll {
   animation: spin 1s linear infinite;
@@ -143,8 +151,10 @@ img {
   padding: 0px;
   margin: 0px;
   pointer-events: none;
-  animation: sparkleFade 3s ease-in-out;
+  animation: sparkleFade 3s ease-in-out forwards;
+  
   transform-origin: center center;
+  opacity: 0;
 }
 
 /* About Me */
@@ -162,19 +172,49 @@ img {
   text-align: left;
   padding-left: 3em;
   padding-right: 3em;
+  overflow-wrap: break-word;
 }
 
 
 
 /* Projects */
-.projects img {
+.allProjects {
+  overflow-x: scroll;
+  display: flex;
+  gap: 5em;
+}
+.allProjects img {
   width: 30em;
   height: 30em;
   text-align: left;
   padding: 20px;
   border-radius: 30px;
   object-fit: cover;
+  margin-bottom: -2em;
 }
+.project {
+  max-width: 30em;
+  
+}
+/* Projects animations */
+.allProjects[animated="true"] {
+  border: 5px solid firebrick;
+  overflow: hidden;
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  animation: scroll 20s linear infinite;
+}
+.allProjects[animated=true] .project{
+  flex-wrap: nowrap;
+  width: max-content;
+  
+}
+@keyframes scroll {
+  to {
+    transform: translate(-100%);
+  }
+}
+
 
 /* Contact Me */
 .emailLink {

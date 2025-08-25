@@ -6,9 +6,12 @@ import "aos/dist/aos.css";
 import Typed from "typed.js";
 import myImg from "./assets/myImg.jpg"
 import resume from './assets/resume.pdf'
+import report from './assets/basef2025report.pdf'
 import grindTrackImg from "./assets/grindTrackImg.png"
 import tamagotchiImg from "./assets/tamagotchiImg.png"
+import basefImg from "./assets/basefImg.jpg"
 import birthdayCardImg from "./assets/birthdayCardImg.png"
+
 
 function App() {
 
@@ -30,6 +33,16 @@ function App() {
     duration: 1300,
     once: true
   });
+
+  /* Scrolling projects */
+  const projects = document.querySelector(".allProjects")
+  const scrollAnimation = function() {
+      projects?.setAttribute("animated", "true");
+  }
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+     scrollAnimation();
+  }
+
 
 
   return (
@@ -103,24 +116,30 @@ function App() {
         <div className="projectDiv" data-aos="flip-right">
           <h2>Projects</h2>
 
-          <div className="projects">
-            <div>
+          <div className="allProjects">
+            <div className="project">
               <a href="https://github.com/junimo-maithili/grind-track">GrindTrack</a>
               <img src={grindTrackImg}></img>
               <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set.</p>
               <a href="https://github.com/junimo-maithili/grind-track"></a>
             </div>
 
-            <div>
+            <div className="project">
+              <a href={report} target="_blank" rel="noopener noreferrer">BASEF 2025</a>
+              <img src={basefImg}></img>
+              <p>A report I worked on with a partner investigating the most efficient type of dye to use in Dye-Sensitized Solar Cells.</p>
+            </div>
+
+            <div className="project">
               <a href="https://github.com/junimo-maithili/grind-track">Tamagotchi</a>
               <img src={tamagotchiImg}></img>
               <p>A Google Chrome extension where you can take care of a pet by feeding it, petting it, and playing games with it!</p>
             </div>
 
-            <div>
-              <a href="https://github.com/junimo-maithili/birthday-card">Birthday Card</a>
+            <div className="project">
+              <a href="https://github.com/junimo-maithili/birthday-card">Tamagotchi</a>
               <img src={birthdayCardImg}></img>
-              <p>A simple birthday card I made.</p>
+              <p>A silly little birthday card I made!</p>
             </div>
           </div>
         </div>
