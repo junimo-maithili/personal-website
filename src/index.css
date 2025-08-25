@@ -24,14 +24,13 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 5em;
   line-height: 1.1;
 }
 
@@ -67,25 +66,73 @@ button:focus-visible {
   }
 }
 
+/* Profile */
+.contactLinks {
+  display: flex;
+  flex: 50 50 50;
+  flex-direction: row;
+  justify-content: center;
+}
+.myImgDiv {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+.myImg {
+  width: 400px;
+  height: 400px;
+  border-radius: 5000px;
+  padding: 40px;
+}
+.smallImg {
+  width: 250px;
+  height: 250px;
+  border-radius: 5000px;
+  position: relative;
+  top: 125px;
+  transform: rotateY(150deg);
+}
+.roll {
+  animation: spin 1s linear infinite;
+}
 
+/* About Me */
+.aboutMe {
+  background-color: lightblue;
+  border-radius: 50px;
+}
+
+/* Experience */
+.experienceItem {
+  text-align: left;
+}
+.experience {
+  background-color: plum;
+  border-radius: 50px;
+}
+
+
+/* Projects */
+.projectDiv {
+  background-color: pink;
+  border-radius: 50px;
+}
 .projects {
   display: flex;
   flex-direction: row;
 }
-
 .projects img {
-  width: 400px;
+  width: 375px;
   height: auto;
   text-align: left;
-
+  padding: 20px;
 }
 
-.experienceItem {
-  text-align: left;
 
+h2 {
+  font-size: 40px;
 }
 
-.contactLinks a {
-  display: flex;
-  flex-direction: row;
-}
+
+
+

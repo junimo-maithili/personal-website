@@ -16,42 +16,55 @@ function App() {
      </div>
      <br/>
 
-        <img src="https://i.pinimg.com/736x/1c/a8/f0/1ca8f048104218a51287a1441b7eaeac.jpg"></img>
+    <div className="myImgDiv">
+      <img className="smallImg" src="https://i.pinimg.com/736x/1c/a8/f0/1ca8f048104218a51287a1441b7eaeac.jpg"></img>
+      <img className="myImg" src="https://i.pinimg.com/736x/1c/a8/f0/1ca8f048104218a51287a1441b7eaeac.jpg"></img>
+      <img className="smallImg" src="https://i.pinimg.com/736x/1c/a8/f0/1ca8f048104218a51287a1441b7eaeac.jpg"></img>
+    </div>
 
 
-        <h2>About Me</h2>
-        <p>My name is Maithili Rastogi, and I'm a grade 12 student in Halton. I'm interesting in drawing, reading, and spending time with my friends!</p>
-        
-        <h2>Experience</h2>
-        <ExperienceItem />
-        <ExperienceItem />
-        <ExperienceItem />
+        <div className="aboutMe">
+          <h2>About Me</h2>
+          <p>My name is Maithili Rastogi, and I'm a grade 12 student in Halton. I'm interesting in drawing, reading, and spending time with my friends!</p>
+        </div>
+        <div className="experience">
+          <h2>Experience</h2>
+          <ExperienceItem />
+          <ExperienceItem />
+          <ExperienceItem />
+        </div>
 
-        <h2>Projects</h2>
-        <div className="projects">
-          <div>
-            <h3>GrindTrack</h3>
-            <img src="https://zeldauniverse.net/wp-content/uploads/2018/05/C6W-oTOWYAA1R-K-700x500.jpg"></img>
-            <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set!</p>
-            <a href="https://github.com/junimo-maithili/grind-track"></a>
-          </div>
+        <div className="projectDiv">
+          <h2>Projects</h2>
+ 
+          <div className="projects">
+            <div>
+              <a href="https://github.com/junimo-maithili/grind-track">GrindTrack</a>
+              <img src="https://zeldauniverse.net/wp-content/uploads/2018/05/C6W-oTOWYAA1R-K-700x500.jpg"></img>
+              <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set!</p>
+              <a href="https://github.com/junimo-maithili/grind-track"></a>
+            </div>
 
-          <div>
-            <h3>GrindTrack</h3>
-            <img src="https://zeldauniverse.net/wp-content/uploads/2018/05/C6W-oTOWYAA1R-K-700x500.jpg"></img>
-            <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set!</p>
-            <a href="https://github.com/junimo-maithili/grind-track"></a>
-          </div>
+            <div>
+              <a href="https://github.com/junimo-maithili/grind-track">GrindTrack</a>
+              <img src="https://zeldauniverse.net/wp-content/uploads/2018/05/C6W-oTOWYAA1R-K-700x500.jpg"></img>
+              <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set!</p>
+              <a href="https://github.com/junimo-maithili/grind-track"></a>
+            </div>
 
-          <div>
-            <h3>GrindTrack</h3>
-            <img src="https://zeldauniverse.net/wp-content/uploads/2018/05/C6W-oTOWYAA1R-K-700x500.jpg"></img>
-            <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set!</p>
-            <a href="https://github.com/junimo-maithili/grind-track"></a>
+            <div>
+              <a href="https://github.com/junimo-maithili/grind-track">GrindTrack</a>
+              <img src="https://zeldauniverse.net/wp-content/uploads/2018/05/C6W-oTOWYAA1R-K-700x500.jpg"></img>
+              <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set!</p>
+              <a href="https://github.com/junimo-maithili/grind-track"></a>
+            </div>
           </div>
         </div>
+
+        
     
       </div>
+      
    
     </>
   )
