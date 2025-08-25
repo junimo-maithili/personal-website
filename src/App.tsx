@@ -25,7 +25,7 @@ function App() {
 
   /* Flipping animations using AOS */
   AOS.init({
-    duration: 800,
+    duration: 1300,
     once: true
   });
 
