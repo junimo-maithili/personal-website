@@ -38,8 +38,6 @@ body {
   min-height: 100vh;
   font-size: 60%;
 }
-
-
 p {
   font-size: 1.5em;
   padding-left: 1.75em;
@@ -89,15 +87,11 @@ img {
 .projectDiv {
   padding: 1em;
   transition: transform 0.4s ease;
+  margin-bottom: 5em;
 }
-
 .projects, .myImgDiv, .contactLinks {
   display: flex;
   flex-direction: row;
-}
-
-.projectDiv, .aboutMe, .experience {
-  margin-bottom: 5em;
 }
 
 
@@ -168,10 +162,11 @@ img {
 }
 .projects img {
   width: 30em;
-  height: auto;
+  height: 30em;
   text-align: left;
   padding: 20px;
   border-radius: 30px;
+  object-fit: cover;
 }
 
 /* Sparkles */
