@@ -125,13 +125,13 @@ function App() {
           <img className="sideImg" src={sharkSideImg}></img>
         </div>
 
-        <div className="aboutMeDiv" data-aos="flip-right">
-          <h2>About Me</h2>
-          <p>I'm Maithili, and I'm a grade 12 student at White Oaks Secondary School. I love drawing, gaming, and spending time with my friends!</p>
+        <div className="backCard" id="aboutMeDiv" data-aos="flip-right">
+          <h2>₊˚⊹⋆ Hi, I'm Maithili! ⋆⭒˚｡⋆</h2>
+          <p>I'm a grade 12 student in Halton. I love drawing, gaming, and spending time with my friends!</p>
         </div>
 
-        <div className="experienceDiv" data-aos="flip-left">
-          <h2>Experience</h2>
+        <div className="backCard" id="experienceDiv" data-aos="flip-left">
+          <h2>⋆˚｡⋆ Experience ⋆˚｡⋆</h2>
 
           <div className="experienceItem">
             <h3>Girls Leading in Stem Club Senior Executive</h3>
@@ -161,8 +161,8 @@ function App() {
           </div>
         </div>
 
-        <div className="awardsDiv" data-aos="flip-right">
-          <h2>Awards</h2>
+        <div className="backCard" id="awardsDiv" data-aos="flip-right">
+          <h2>⋆｡‧˚ʚ Awards ɞ˚‧｡⋆</h2>
 
           <div className="award">
             <h3>DECA Awards</h3>
@@ -190,9 +190,10 @@ function App() {
           </div>
         </div>
 
-        <div className="projectDiv" data-aos="flip-left">
-          <h2>Projects</h2>
-          <button type="button" onClick={pauseButton}>{paused ? "go ahead!" : "hold up!"}</button>
+        <div className="backCard" id="projectDiv" data-aos="flip-left">
+          <h2>⋆˚✿˖° Projects ｡𖦹°‧</h2>
+          <button type="button" className="pauseButton" onClick={pauseButton}>{paused ? "go ahead!" : "hold up!"}</button>
+          <p className="scrollLabel">Scroll ˋ°•*⁀➷</p>
 
           <div className="projectsWrapper">
             <div className="allProjects" ref={allProjectsRef}>
@@ -224,8 +225,8 @@ function App() {
           </div>
         </div>
 
-        <div className="contactMeDiv" data-aos="flip-right">
-            <h2>Contact Me!</h2>
+        <div className="backCard" id="contactMeDiv" data-aos="flip-right">
+            <h2>⋆ 𖤓 Contact Me! ⋆˚࿔</h2>
             <p>Feel free to email me at <a className="emailLink" href="mailto:rastogim2948@gmail.com"> rastogim2948@gmail.com</a> :)</p>
         </div>
       </div>

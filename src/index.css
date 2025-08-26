@@ -1,11 +1,10 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet');
 
-
 :root {
   line-height: 1.5;
-
-  background: linear-gradient(152deg,rgba(39, 61, 92, 1) 0%, rgba(50, 91, 101, 1) 45%, rgba(62, 127, 112, 1) 100%);  color: #494b85;
+  background: linear-gradient(152deg,rgba(39, 61, 92, 1) 0%, rgba(50, 91, 101, 1) 45%, rgba(62, 127, 112, 1) 100%);
+  color: #2c4e69;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -27,6 +26,7 @@ a:hover {
   color: #F59E0B;
   cursor: url("./assets/cursorClick.png") 20 30, auto;
 }
+
 button {
   width: auto;
   height: 1.5em;
@@ -37,24 +37,15 @@ button {
   font-family: "Lato", sans-serif;
   border-radius: 500em;
   position: relative;
-  top: -2em;
+  top: 1.5em;
   font-weight: 700;
-  
+  margin-bottom: 3em;
 }
 button:hover {
   background-color: #e28f00;
   cursor: url("./assets/cursorClick.png") 20 30, auto;
+  transform: scale(1.1);
 }
-
-/* Scroll bar */
-.allProjects::-webkit-scrollbar {
-  height: 1em;
-}
-.allProjects::-webkit-scrollbar-thumb {
-  background-color: #F59E0B;
-  border-radius: 3em;
-}
-
 
 body {
   margin: 0;
@@ -89,31 +80,37 @@ h2 {
   color: #2e8a92;
   font-weight: 800;
   margin-top: 0.25em;
+  overflow: auto;
 }
 h3, .allProjects a {
   font-size: 2.3em;
   margin-bottom: -0.5em;
-  color: #494b85;
+  color: #2c4e69;
   font-weight: 800;
   margin-top: 2em;
   overflow: auto;
   white-space: nowrap;
 }
-.allProjects h2 {
-  margin-bottom: 2em;
-  color: #FFFFFF;
+#projectDiv h2 {
+  margin-bottom: -0.3em;
 }
 img {
   object-fit: cover;
 }
 
-.aboutMeDiv, .experienceDiv, .projectDiv, .contactMeDiv, .awardsDiv {
+/* Background cards */
+.backCard {
   padding: 2em;
   transition: transform 0.4s ease;
   margin-bottom: 5em;
   background-color: #EDE9FE;
   border-radius: 50px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+.backCard:hover {
+  box-shadow: 0 0 20px rgba(46,138,146, 0.7);
+}
+
 .allProjects, .myImgDiv, .contactLinks {
   display: flex;
   flex-direction: row;
@@ -123,10 +120,16 @@ img {
 
 /* Remove certain elements on smaller screens */
 @media (max-width: 767px) {
-  .sideImg, .sparkles {
+  .sideImg, .sparkles, .pauseButton {
     display: none;
   }
 }
+@media (min-width: 768px) {
+  .scrollLabel {
+    display: none;
+  }
+}
+
 
 /* Profile */
 .contactLinks {
@@ -185,14 +188,14 @@ img {
 }
 
 /* About Me */
-.aboutMeDiv p {
+#aboutMeDiv p {
   font-size: 2em;
   margin-left: -0.9em;
   margin-right: -0.9em;
 }
 
 /* Experience */
-.experienceDiv {
+#experienceDiv {
   padding-bottom: 3em;
 }
 .experienceItem {
@@ -200,6 +203,16 @@ img {
   padding-left: 3em;
   padding-right: 3em;
   overflow-wrap: break-word;
+}
+
+/* Awards */
+#awardsDiv {
+  text-align: left;
+  padding-left: 5em;
+  padding-right: 3em;
+}
+#awardsDiv h2 {
+  text-align: center;
 }
 
 /* Projects */
@@ -220,17 +233,21 @@ img {
 }
 .project {
   max-width: 35em;
-  
+}
+.project a:hover {
+  color: #F59E0B;
+}
+.scrollLabel {
+  margin-top: -2em;
 }
 
-/* Awards */
-.awardsDiv {
-  text-align: left;
-  padding-left: 3em;
-  padding-right: 3em;
+/* Scroll bar */
+.allProjects::-webkit-scrollbar {
+  height: 1em;
 }
-.awardsDiv h2 {
-  text-align: center;
+.allProjects::-webkit-scrollbar-thumb {
+  background-color: #F59E0B;
+  border-radius: 3em;
 }
 
 /* Projects animations */
@@ -255,6 +272,9 @@ img {
   overflow: hidden;
   transform-origin: left center;
 }
+.allProjects[animated="true"]:hover {
+  animation-play-state: paused;
+}
 .allProjects[animated="false"] {
   overflow-x: auto;
   display: flex;
@@ -262,6 +282,12 @@ img {
   width: 100%;
   -webkit-overflow-scrolling: touch;
   justify-content: left;
+}
+.project:hover {
+  transform: scale(1);
+}
+.project {
+  transform: scale(0.9);
 }
 @keyframes scroll {
   to {
