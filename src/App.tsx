@@ -50,13 +50,18 @@ function App() {
 
     const allProjects = allProjectsRef.current;
     if (!allProjects || hasClonedRef.current) return;
+    
 
     allProjects.setAttribute("animated", "true");
 
     const projects = Array.from(allProjects.querySelectorAll(".project")) as HTMLElement[];
+    if (projects.length === 0) {
+      allProjects.setAttribute("animated", "false");
+
+    };
+    
     projects.forEach(project => {
       const clone = project.cloneNode(true) as HTMLElement;
-      clone.setAttribute("aria-hidden", "true");
       allProjects.appendChild(clone);
       clone.setAttribute("cloned", "true");
     });
@@ -69,7 +74,6 @@ function App() {
   useEffect(() => {
     createClones();
   }, []);
-
 
   // Pause button for projects
   function pauseButton() {
@@ -162,7 +166,7 @@ function App() {
 
           <div className="award">
             <h3>DECA Awards</h3>
-            <p>2023 & 2024</p>
+            <p>November 2023 — February 2025</p>
             <ul>
               <li>Placed 1st and 2nd out of 70 students in consecutive years at the Hamilton regional case competition</li>
               <li>Two-time provincial finalist (top 130 participants) for ability to overcome unexpected hurdles in business scenarios through problem-solving, communication, and public speaking skills</li>
@@ -171,7 +175,7 @@ function App() {
 
           <div className="award">
               <h3>Mohawk-Sheridan Award of Excellence Award</h3>
-              <p>2023 & 2024</p>
+              <p>March 2023 — 2024</p>
               <ul>
                 <li>Received Bronze Mohawk-Sheridan Award of Excellence Award in consecutive years for science fair displays on solar cells</li>
               </ul>
@@ -179,7 +183,7 @@ function App() {
 
           <div className="award">
               <h3>UTHSDC Fourth Place Award</h3>
-              <p>2024</p>
+              <p>November 2024</p>
               <ul>
                 <li>Team achieved fourth place in the University of Toronto High School Design Competition for solution to civil engineering case study</li>
               </ul>
@@ -188,7 +192,7 @@ function App() {
 
         <div className="projectDiv" data-aos="flip-left">
           <h2>Projects</h2>
-          <button type="button" onClick={pauseButton}>{paused ? "wait!" : "go ahead!"}</button>
+          <button type="button" onClick={pauseButton}>{paused ? "go ahead!" : "hold up!"}</button>
 
           <div className="projectsWrapper">
             <div className="allProjects" ref={allProjectsRef}>
@@ -222,7 +226,7 @@ function App() {
 
         <div className="contactMeDiv" data-aos="flip-right">
             <h2>Contact Me!</h2>
-            <p>Feel free to email me at <a className="emailLink" href="mailto:rastogim2948@gmail.com"> rastogim2948@gmail.com</a>!</p>
+            <p>Feel free to email me at <a className="emailLink" href="mailto:rastogim2948@gmail.com"> rastogim2948@gmail.com</a> :)</p>
         </div>
       </div>
     </>
