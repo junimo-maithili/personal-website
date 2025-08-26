@@ -80,7 +80,7 @@ h2 {
   color: #2e8a92;
   font-weight: 800;
   margin-top: 0.25em;
-  overflow: auto;
+  overflow-wrap: break-word;
 }
 h3, .allProjects a {
   font-size: 2.3em;
@@ -90,6 +90,9 @@ h3, .allProjects a {
   margin-top: 2em;
   overflow: auto;
   white-space: nowrap;
+}
+h3 {
+  overflow-wrap: break-word !important;
 }
 #projectDiv h2 {
   margin-bottom: -0.3em;
@@ -120,7 +123,7 @@ img {
 
 /* Remove certain elements on smaller screens */
 @media (max-width: 767px) {
-  .sideImg, .sparkles, .pauseButton {
+  .sideImg, .sparkles, .pauseButton, .musicButton {
     display: none;
   }
 }

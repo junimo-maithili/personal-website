@@ -20,6 +20,16 @@ function App() {
 
   // UseState hooks
   const [paused, setPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Removing emojis from titles if on mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Typing animation for name
   const el = useRef<HTMLSpanElement>(null);
@@ -135,14 +145,14 @@ function App() {
         </div>
 
         <div className="backCard" id="aboutMeDiv" data-aos="flip-right">
-        <button type="button" className="musicButton" onClick={toggleMusic}>cue the music!</button>
-        <Music />
-          <h2>₊˚⊹⋆ Hi, I'm Maithili! ⋆⭒˚｡⋆</h2>
+          <button type="button" className="musicButton" onClick={toggleMusic}>cue the music!</button>
+          <Music />
+          <h2>{isMobile ? "Hi, I'm Maithili!" : "˚⊹⋆ Hi, I'm Maithili! ⋆⭒˚｡⋆"}</h2>
           <p>I'm a grade 12 student in Halton. I love drawing, gaming, and spending time with my friends!</p>
         </div>
 
         <div className="backCard" id="experienceDiv" data-aos="flip-left">
-          <h2>⋆˚｡⋆ Experience ⋆˚｡⋆</h2>
+          <h2>{isMobile ? "Experience" : "⋆˚｡⋆ Experience ⋆˚｡⋆"}</h2>
 
           <div className="experienceItem">
             <h3>Girls Leading in Stem Club Senior Executive</h3>
@@ -173,7 +183,7 @@ function App() {
         </div>
 
         <div className="backCard" id="awardsDiv" data-aos="flip-right">
-          <h2>⋆｡‧˚ʚ Awards ɞ˚‧｡⋆</h2>
+          <h2>{isMobile ? "Awards" : "⋆｡‧˚ʚ Awards ɞ˚‧｡⋆"}</h2>
 
           <div className="award">
             <h3>DECA Awards</h3>
@@ -202,7 +212,7 @@ function App() {
         </div>
 
         <div className="backCard" id="projectDiv" data-aos="flip-left">
-          <h2>⋆˚✿˖° Projects ｡𖦹°‧</h2>
+          <h2>{isMobile? "Projects" : "⋆˚✿˖° Projects ｡𖦹°‧"}</h2>
           <button type="button" className="pauseButton" onClick={pauseButton}>{paused ? "go ahead!" : "let me scroll!"}</button>
           <p className="scrollLabel">Scroll ˋ°•*⁀➷</p>
 
@@ -237,7 +247,7 @@ function App() {
         </div>
 
         <div className="backCard" id="contactMeDiv" data-aos="flip-right">
-            <h2>⋆ 𖤓 Contact Me! ⋆˚࿔</h2>
+            <h2>{isMobile ? "Contact Me!" : "𖤓 Contact Me! ⋆˚࿔"}</h2>
             <p>Feel free to email me at <a className="emailLink" href="mailto:rastogim2948@gmail.com"> rastogim2948@gmail.com</a> :)</p>
         </div>
       </div>
