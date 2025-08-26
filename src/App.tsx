@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import Typed from "typed.js";
 import myImg from "./assets/myImg.jpg"
 import resume from './assets/resume.pdf'
-import report from './assets/basef2025report.pdf'
+import report from './assets/basef2025Report.pdf'
 import grindTrackImg from "./assets/grindTrackImg.png"
 import tamagotchiImg from "./assets/tamagotchiImg.png"
 import basefImg from "./assets/basefImg.jpg"
