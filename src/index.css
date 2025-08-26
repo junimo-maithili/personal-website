@@ -5,9 +5,7 @@
 :root {
   line-height: 1.5;
 
-  background-color: #273d5c;
-  color: #494b85;
-
+  background: linear-gradient(152deg,rgba(39, 61, 92, 1) 0%, rgba(50, 91, 101, 1) 45%, rgba(62, 127, 112, 1) 100%);  color: #494b85;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -29,7 +27,7 @@ a:hover {
   color: #F59E0B;
 }
 button {
-  width: 4em;
+  width: auto;
   height: 1.5em;
   text-align: center;
   background-color: #F59E0B;
@@ -85,7 +83,7 @@ h1 {
 }
 h2 {
   font-size: 4em;
-  color: #F59E0B;
+  color: #2e8a92;
   font-weight: 800;
   margin-top: 0.25em;
 }
@@ -106,7 +104,7 @@ img {
   object-fit: cover;
 }
 
-.aboutMe, .experience, .projectDiv, .contactMeDiv {
+.aboutMeDiv, .experienceDiv, .projectDiv, .contactMeDiv, .awardsDiv {
   padding: 2em;
   transition: transform 0.4s ease;
   margin-bottom: 5em;
@@ -120,12 +118,11 @@ img {
   gap: 2em;
 }
 
-/* Desktop-only elements */
-@media (min-width: 768px) {
-  .smallImg, .sparkles {
-    opacity: 1;
+/* Remove certain elements on smaller screens */
+@media (max-width: 767px) {
+  .sideImg, .sparkles {
+    display: none;
   }
-
 }
 
 /* Profile */
@@ -152,11 +149,10 @@ img {
   height: 350px;
   border-radius: 5000px;
 }
-.smallImg {
+.sideImg {
   width: 225px;
   height: 225px;
   border-radius: 5000px;
-  opacity: 0;
 }
 .roll {
   animation: spin 1s linear infinite;
@@ -186,14 +182,14 @@ img {
 }
 
 /* About Me */
-.aboutMe p {
+.aboutMeDiv p {
   font-size: 2em;
   margin-left: -0.9em;
   margin-right: -0.9em;
 }
 
 /* Experience */
-.experience {
+.experienceDiv {
   padding-bottom: 3em;
 }
 .experienceItem {
@@ -202,8 +198,6 @@ img {
   padding-right: 3em;
   overflow-wrap: break-word;
 }
-
-
 
 /* Projects */
 .allProjects {
@@ -224,6 +218,16 @@ img {
 .project {
   max-width: 35em;
   
+}
+
+/* Awards */
+.awardsDiv {
+  text-align: left;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.awardsDiv h2 {
+  text-align: center;
 }
 
 /* Projects animations */
@@ -261,7 +265,11 @@ img {
     transform: translateX(calc(-50% - 3em));
   }
 }
-
+@media (prefers-reduced-motion: reduce) {
+  .allProjects[animated="true"] {
+    animation: none !important;
+  }
+}
 
 /* Contact Me */
 .emailLink {

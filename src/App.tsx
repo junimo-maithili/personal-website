@@ -11,13 +11,16 @@ import grindTrackImg from "./assets/grindTrackImg.png"
 import tamagotchiImg from "./assets/tamagotchiImg.png"
 import basefImg from "./assets/basefImg.jpg"
 import birthdayCardImg from "./assets/birthdayCardImg.png"
+import fuecocoSideImg from "./assets/fuecocoSideImg.png"
+import sharkSideImg from "./assets/sharkSideImg.jpg"
 
 
 function App() {
 
+  // UseState hooks
   const [paused, setPaused] = useState(false);
 
-  /* Typing animation for name */
+  // Typing animation for name
   const el = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     const typed = new Typed(el.current!, {
@@ -30,17 +33,18 @@ function App() {
     };
 }, []);
 
-  /* Flipping animations using AOS */
+  // Flipping animations using AOS
   AOS.init({
     duration: 1300,
     once: true
   });
 
-  /* Scrolling projects */
+  // Scrolling projects
   const allProjectsRef = useRef<HTMLDivElement>(null);
   const hasClonedRef = useRef(false);
 
   function createClones () {
+    // Don't animate on mobile or for users with preferred reduced motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (window.innerWidth < 768) return;
 
@@ -60,12 +64,14 @@ function App() {
     hasClonedRef.current = true;
   }
 
-  /* Create clones on load */
+
+  // Create clones on load
   useEffect(() => {
     createClones();
   }, []);
 
-  /* Pause button for projects */
+
+  // Pause button for projects
   function pauseButton() {
     const allProjects = allProjectsRef.current;
     if (!allProjects) return;
@@ -84,21 +90,18 @@ function App() {
   }
 
   
-  
-
   return (
     <>
-     
       <div className="container">
 
-      <div className="name">
-        <h1><span ref={el}></span></h1>
-        <div className="contactLinks">
-          <a href="https://github.com/junimo-maithili">github</a>
-          <a href="https://www.linkedin.com/in/maithili-rastogi-982938302/">linkedin</a>
-          <a href={resume} target="_blank" rel="noopener noreferrer">resumé</a>
+        <div className="name">
+          <h1><span ref={el}></span></h1>
+          <div className="contactLinks">
+            <a href="https://github.com/junimo-maithili">github</a>
+            <a href="https://www.linkedin.com/in/maithili-rastogi-982938302/">linkedin</a>
+            <a href={resume} target="_blank" rel="noopener noreferrer">resumé</a>
+          </div>
         </div>
-      </div>
 
         <div className="sparkleDiv">
           <Sparkle styling={{ xPos : 5, yPos: 8, fontSize: 50 }} />
@@ -113,17 +116,17 @@ function App() {
         <br/>
 
         <div className="myImgDiv">
-          <img className="smallImg" src="https://i.pinimg.com/736x/1c/a8/f0/1ca8f048104218a51287a1441b7eaeac.jpg"></img>
+          <img className="sideImg" src={fuecocoSideImg}></img>
           <img className="myImg" src={myImg}></img>
-          <img className="smallImg" src="https://i.pinimg.com/736x/1c/a8/f0/1ca8f048104218a51287a1441b7eaeac.jpg"></img>
+          <img className="sideImg" src={sharkSideImg}></img>
         </div>
 
-        <div className="aboutMe" data-aos="flip-right">
+        <div className="aboutMeDiv" data-aos="flip-right">
           <h2>About Me</h2>
           <p>I'm Maithili, and I'm a grade 12 student at White Oaks Secondary School. I love drawing, gaming, and spending time with my friends!</p>
         </div>
 
-        <div className="experience" data-aos="flip-left">
+        <div className="experienceDiv" data-aos="flip-left">
           <h2>Experience</h2>
 
           <div className="experienceItem">
@@ -154,49 +157,74 @@ function App() {
           </div>
         </div>
 
-        <div className="projectDiv" data-aos="flip-right">
+        <div className="awardsDiv" data-aos="flip-right">
+          <h2>Awards</h2>
+
+          <div className="award">
+            <h3>DECA Awards</h3>
+            <p>2023 & 2024</p>
+            <ul>
+              <li>Placed 1st and 2nd out of 70 students in consecutive years at the Hamilton regional case competition</li>
+              <li>Two-time provincial finalist (top 130 participants) for ability to overcome unexpected hurdles in business scenarios through problem-solving, communication, and public speaking skills</li>
+            </ul>
+          </div>
+
+          <div className="award">
+              <h3>Mohawk-Sheridan Award of Excellence Award</h3>
+              <p>2023 & 2024</p>
+              <ul>
+                <li>Received Bronze Mohawk-Sheridan Award of Excellence Award in consecutive years for science fair displays on solar cells</li>
+              </ul>
+          </div>
+
+          <div className="award">
+              <h3>UTHSDC Fourth Place Award</h3>
+              <p>2024</p>
+              <ul>
+                <li>Team achieved fourth place in the University of Toronto High School Design Competition for solution to civil engineering case study</li>
+              </ul>
+          </div>
+        </div>
+
+        <div className="projectDiv" data-aos="flip-left">
           <h2>Projects</h2>
-          <button type="button" onClick={pauseButton}>{paused ? "play" : "pause"}</button>
+          <button type="button" onClick={pauseButton}>{paused ? "wait!" : "go ahead!"}</button>
 
           <div className="projectsWrapper">
-          <div className="allProjects" ref={allProjectsRef}>
-            <div className="project">
-              <a href="https://github.com/junimo-maithili/grind-track">GrindTrack</a>
-              <img src={grindTrackImg}></img>
-              <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set.</p>
-              <a href="https://github.com/junimo-maithili/grind-track"></a>
-            </div>
+            <div className="allProjects" ref={allProjectsRef}>
+              <div className="project">
+                <a href="https://github.com/junimo-maithili/grind-track">GrindTrack</a>
+                <img src={grindTrackImg}></img>
+                <p>A Google Chrome extension that keeps track of time you've spent on "productive websites" that you set.</p>
+                <a href="https://github.com/junimo-maithili/grind-track"></a>
+              </div>
 
-            <div className="project">
-              <a href={report} target="_blank" rel="noopener noreferrer">BASEF 2025</a>
-              <img src={basefImg}></img>
-              <p>A report I worked on with a partner investigating the most efficient type of dye to use in Dye-Sensitized Solar Cells.</p>
-            </div>
+              <div className="project">
+                <a href={report} target="_blank" rel="noopener noreferrer">BASEF 2025</a>
+                <img src={basefImg}></img>
+                <p>A report I worked on with a partner investigating the most efficient type of dye to use in Dye-Sensitized Solar Cells.</p>
+              </div>
 
-            <div className="project">
-              <a href="https://github.com/junimo-maithili/grind-track">Tamagotchi</a>
-              <img src={tamagotchiImg}></img>
-              <p>A Google Chrome extension where you can take care of a pet by feeding it, petting it, and playing games with it!</p>
-            </div>
+              <div className="project">
+                <a href="https://github.com/junimo-maithili/grind-track">Tamagotchi</a>
+                <img src={tamagotchiImg}></img>
+                <p>A Google Chrome extension where you can take care of a pet by feeding it, petting it, and playing games with it!</p>
+              </div>
 
-            <div className="project">
-              <a href="https://github.com/junimo-maithili/birthday-card">Birthday Card</a>
-              <img src={birthdayCardImg}></img>
-              <p>A silly little birthday card I made!</p>
+              <div className="project">
+                <a href="https://github.com/junimo-maithili/birthday-card">Birthday Card</a>
+                <img src={birthdayCardImg}></img>
+                <p>A silly little birthday card I made!</p>
+              </div>
             </div>
-          </div>
           </div>
         </div>
 
-        <div className="contactMeDiv" data-aos="flip-left">
+        <div className="contactMeDiv" data-aos="flip-right">
             <h2>Contact Me!</h2>
             <p>Feel free to email me at <a className="emailLink" href="mailto:rastogim2948@gmail.com"> rastogim2948@gmail.com</a>!</p>
-
         </div>
-
       </div>
-      
-   
     </>
   )
 }
