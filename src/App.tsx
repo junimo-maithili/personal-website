@@ -1,5 +1,5 @@
 import './App.css'
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Sparkle from './components/Sparkle'
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -15,18 +15,20 @@ import birthdayCardImg from "./assets/birthdayCardImg.png"
 
 function App() {
 
+  const [paused, setPaused] = useState(false);
+
   /* Typing animation for name */
   const el = useRef<HTMLSpanElement>(null);
-    useEffect(() => {
-      const typed = new Typed(el.current!, {
-        strings: ["Maithili Rastogi"],
-        typeSpeed: 80,
-        backSpeed: 0,
-      });
-      return () => {
-        typed?.destroy();
-      };
-  }, []);
+  useEffect(() => {
+    const typed = new Typed(el.current!, {
+      strings: ["Maithili Rastogi"],
+      typeSpeed: 80,
+      backSpeed: 0,
+    });
+    return () => {
+      typed?.destroy();
+    };
+}, []);
 
   /* Flipping animations using AOS */
   AOS.init({
@@ -35,15 +37,54 @@ function App() {
   });
 
   /* Scrolling projects */
-  const projects = document.querySelector(".allProjects")
-  const scrollAnimation = function() {
-      projects?.setAttribute("animated", "true");
-  }
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-     scrollAnimation();
+  const allProjectsRef = useRef<HTMLDivElement>(null);
+  const hasClonedRef = useRef(false);
+
+  function createClones () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.innerWidth < 768) return;
+
+    const allProjects = allProjectsRef.current;
+    if (!allProjects || hasClonedRef.current) return;
+
+    allProjects.setAttribute("animated", "true");
+
+    const projects = Array.from(allProjects.querySelectorAll(".project")) as HTMLElement[];
+    projects.forEach(project => {
+      const clone = project.cloneNode(true) as HTMLElement;
+      clone.setAttribute("aria-hidden", "true");
+      allProjects.appendChild(clone);
+      clone.setAttribute("cloned", "true");
+    });
+
+    hasClonedRef.current = true;
   }
 
+  /* Create clones on load */
+  useEffect(() => {
+    createClones();
+  }, []);
 
+  /* Pause button for projects */
+  function pauseButton() {
+    const allProjects = allProjectsRef.current;
+    if (!allProjects) return;
+  
+    if (allProjects.getAttribute("animated") === "false") {
+      allProjects.setAttribute("animated", "true");
+      createClones();
+      setPaused(false);
+
+    } else {
+      allProjects.setAttribute("animated", "false");
+      const clones = Array.from(allProjects.querySelectorAll('[cloned="true"]'));
+      clones.forEach(clone => clone.remove());
+      setPaused(true);
+    }
+  }
+
+  
+  
 
   return (
     <>
@@ -115,8 +156,10 @@ function App() {
 
         <div className="projectDiv" data-aos="flip-right">
           <h2>Projects</h2>
+          <button type="button" onClick={pauseButton}>{paused ? "play" : "pause"}</button>
 
-          <div className="allProjects">
+          <div className="projectsWrapper">
+          <div className="allProjects" ref={allProjectsRef}>
             <div className="project">
               <a href="https://github.com/junimo-maithili/grind-track">GrindTrack</a>
               <img src={grindTrackImg}></img>
@@ -137,10 +180,11 @@ function App() {
             </div>
 
             <div className="project">
-              <a href="https://github.com/junimo-maithili/birthday-card">Tamagotchi</a>
+              <a href="https://github.com/junimo-maithili/birthday-card">Birthday Card</a>
               <img src={birthdayCardImg}></img>
               <p>A silly little birthday card I made!</p>
             </div>
+          </div>
           </div>
         </div>
 

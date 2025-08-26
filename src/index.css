@@ -28,6 +28,33 @@ a {
 a:hover {
   color: #F59E0B;
 }
+button {
+  width: 4em;
+  height: 1.5em;
+  text-align: center;
+  background-color: #F59E0B;
+  color: #FFFFFF;
+  border: none;
+  font-family: "Lato", sans-serif;
+  border-radius: 500em;
+  position: relative;
+  top: -2em;
+  font-weight: 700;
+  
+}
+button:hover {
+  background-color: #e28f00;
+}
+
+/* Scroll bar */
+.allProjects::-webkit-scrollbar {
+  height: 1em;
+}
+.allProjects::-webkit-scrollbar-thumb {
+  background-color: #F59E0B;
+  border-radius: 3em;
+}
+
 
 body {
   margin: 0;
@@ -98,6 +125,7 @@ img {
   .smallImg, .sparkles {
     opacity: 1;
   }
+
 }
 
 /* Profile */
@@ -179,9 +207,10 @@ img {
 
 /* Projects */
 .allProjects {
-  overflow-x: scroll;
   display: flex;
   gap: 5em;
+  overflow-x: scroll;
+  width: max-content;
 }
 .allProjects img {
   width: 30em;
@@ -193,25 +222,43 @@ img {
   margin-bottom: -2em;
 }
 .project {
-  max-width: 30em;
+  max-width: 35em;
   
 }
+
 /* Projects animations */
-.allProjects[animated="true"] {
-  border: 5px solid firebrick;
+.projectsWrapper {
   overflow: hidden;
+  width: 100%;
+  position: relative;
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
   -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-  animation: scroll 20s linear infinite;
 }
-.allProjects[animated=true] .project{
+.allProjects[animated="true"] {
+  overflow: hidden;
+  display: flex;
+  gap: 5em;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+
+}
+.allProjects[animated="true"] .project{
   flex-wrap: nowrap;
   width: max-content;
-  
+  overflow: hidden;
+  transform-origin: left center;
+}
+.allProjects[animated="false"] {
+  overflow-x: auto;
+  display: flex;
+  gap: 5em;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  justify-content: left;
 }
 @keyframes scroll {
   to {
-    transform: translate(-100%);
+    transform: translateX(calc(-50% - 3em));
   }
 }
 
