@@ -273,7 +273,7 @@ img {
   transform-origin: left center;
 }
 .allProjects[animated="true"]:hover {
-  animation-play-state: paused;
+  animation-play-state: paused;  
 }
 .allProjects[animated="false"] {
   overflow-x: auto;
@@ -301,9 +301,50 @@ img {
 }
 
 /* Contact Me */
+#contactMeDiv h2 {
+  margin-bottom: -0.2em;
+}
 .emailLink {
   text-decoration: none;
   color: #F59E0B;
   font-weight: 800;
+}
+.emailLink:hover {
+  color: #e28f00;
+}
 
-;}
+/* Music */
+#musicDiv {
+  display: none;
+  position: fixed;
+  top: -53em;
+  left: 36em;
+  z-index: 9998;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 43em;
+  height: 40em;
+  background-color: white;
+}
+.musicButton {
+  position: fixed;
+  top: -8em;
+  left: 45.5%;
+  z-index:999;
+}
+.music {
+  font-size: 10px;
+  color: #cccccc;
+  line-break: anywhere;
+  word-break: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+}
+.singerLink {
+  color: #cccccc;
+  text-decoration: none;
+}

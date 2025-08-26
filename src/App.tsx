@@ -1,6 +1,7 @@
 import './App.css'
 import { useEffect, useRef, useState } from "react";
 import Sparkle from './components/Sparkle'
+import Music from './components/Music'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Typed from "typed.js";
@@ -33,11 +34,20 @@ function App() {
     };
 }, []);
 
-  // Flipping animations using AOS
-  AOS.init({
-    duration: 1300,
-    once: true
-  });
+  // Music toggle
+  function toggleMusic() {
+    const musicPlayer = document.getElementById('musicDiv');
+    if (!musicPlayer) return;
+    musicPlayer.style.display = (musicPlayer.style.display === 'none') ? 'block' : 'none';
+  }
+
+  // Initialize scrolling animations using AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1300,
+      once: true,
+    });
+  }, []);
 
   // Scrolling projects
   const allProjectsRef = useRef<HTMLDivElement>(null);
@@ -50,7 +60,6 @@ function App() {
 
     const allProjects = allProjectsRef.current;
     if (!allProjects || hasClonedRef.current) return;
-    
 
     allProjects.setAttribute("animated", "true");
 
@@ -120,12 +129,14 @@ function App() {
         <br/>
 
         <div className="myImgDiv">
-          <img className="sideImg" src={fuecocoSideImg}></img>
-          <img className="myImg" src={myImg}></img>
-          <img className="sideImg" src={sharkSideImg}></img>
+          <img className="sideImg" src={fuecocoSideImg} data-aos="fade-up"></img>
+          <img className="myImg" src={myImg} data-aos="fade-up"></img>
+          <img className="sideImg" src={sharkSideImg} data-aos="fade-up"></img>
         </div>
 
         <div className="backCard" id="aboutMeDiv" data-aos="flip-right">
+        <button type="button" className="musicButton" onClick={toggleMusic}>cue the music!</button>
+        <Music />
           <h2>₊˚⊹⋆ Hi, I'm Maithili! ⋆⭒˚｡⋆</h2>
           <p>I'm a grade 12 student in Halton. I love drawing, gaming, and spending time with my friends!</p>
         </div>
@@ -192,7 +203,7 @@ function App() {
 
         <div className="backCard" id="projectDiv" data-aos="flip-left">
           <h2>⋆˚✿˖° Projects ｡𖦹°‧</h2>
-          <button type="button" className="pauseButton" onClick={pauseButton}>{paused ? "go ahead!" : "hold up!"}</button>
+          <button type="button" className="pauseButton" onClick={pauseButton}>{paused ? "go ahead!" : "let me scroll!"}</button>
           <p className="scrollLabel">Scroll ˋ°•*⁀➷</p>
 
           <div className="projectsWrapper">
